@@ -79,6 +79,7 @@ int   choiceNumber = userChoice;
   }
 }
 void restart() {
+  _storyNumber = 0;
 
 }
 
