@@ -34,13 +34,13 @@ class _LocationScreenState extends State<LocationScreen> {
         cityName = '';
         return;
       }
-      double temp = weatherData['main']['temp'];
+      var temp = weatherData['main']['temp'];
       temperature = temp.toInt();
       var condition = weatherData['weather'][0]['id'];
       cityName = weatherData['name'];
       weatherIcon = weather.getWeatherIcon(condition);
       weatherMessage = weather.getMessage(temperature);
-      print(temperature);
+      // print(temperature);
     });
   }
 
@@ -76,8 +76,8 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      var typedName = await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
@@ -85,6 +85,15 @@ class _LocationScreenState extends State<LocationScreen> {
                           },
                         ),
                       );
+                      // print(typedName);
+                      if (typedName != null) {
+                        //=============================sanikumar sahani=================//
+                        
+                        var weatherData =
+                            await weather.getCityWeather(typedName);
+                        // print(weatherData);
+                        updateUI(weatherData);
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
