@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flash_chat/components/rounded_button.dart';
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
   @override
@@ -54,6 +54,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             TextField(
               onChanged: (value) {
                 //Do something with the user input.
+                //*sanikumar sahani
+                //?sanikumar sahani
+                //!sanikumar sahani
               },
               decoration: InputDecoration(
                 hintText: 'Enter your password',
