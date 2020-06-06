@@ -1,4 +1,4 @@
-#Sat Jun 06 05:38:27 IST 2020
+#Sat Jun 06 06:04:44 IST 2020
 base.2=/home/sahani/Desktop/sanikumar/Flutter-Apps/Flash Chat/build/app/intermediates/dex/debug/mergeDexDebug/out/classes2.dex
 path.2=classes2.dex
 base.1=/home/sahani/Desktop/sanikumar/Flutter-Apps/Flash Chat/build/app/intermediates/dex/debug/mergeDexDebug/out/classes3.dex
