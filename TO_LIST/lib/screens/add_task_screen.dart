@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AddTaskScreen extends StatelessWidget {
+class AddTaskScreen extends StatefulWidget {
+  final Function addTaskCallback;
+  AddTaskScreen(this.addTaskCallback);
+
+  @override
+  _AddTaskScreenState createState() => _AddTaskScreenState();
+}
+
+class _AddTaskScreenState extends State<AddTaskScreen> {
+      String newTaskTitle;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +24,6 @@ class AddTaskScreen extends StatelessWidget {
               topRight: Radius.circular(30.0),
             )),
         child: Column(
-          
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
@@ -28,16 +37,17 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              onChanged: (newText) {
+                newTaskTitle = newText;
+              },
             ),
             FlatButton(
-              child: Text('Add',
-              style: TextStyle(
-                color: Colors.white
-              )
-              ),
+              child: Text('Add', style: TextStyle(color: Colors.white)),
               color: Colors.lightBlueAccent,
               onPressed: () {
-                //add outr task to the list
+                print(newTaskTitle);
+                widget.addTaskCallback(newTaskTitle);
+                Navigator.pop(context);
               },
             ),
           ],

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/task.dart';
+import 'package:todo_app/models/task_data.dart';
 import 'package:todo_app/screens/add_task_screen.dart';
 import 'package:todo_app/widgets/tasks_list.dart';
+import 'package:provider/provider.dart';
 
 class TasksScreen extends StatelessWidget {
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +19,10 @@ class TasksScreen extends StatelessWidget {
         ),
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => AddTaskScreen());
+              context: context,
+              builder: (context) => AddTaskScreen((newTaskTitle) {
+                    // tasks.add(Task(name: newTaskTitle));
+                  }));
         },
       ),
       body: Column(
@@ -27,14 +34,19 @@ class TasksScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 30.0,
-                  child: Icon(
-                    Icons.list,
-                    size: 30.0,
-                    color: Colors.lightBlueAccent,
+                GestureDetector(
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 30.0,
+                    child: Icon(
+                      Icons.list,
+                      size: 30.0,
+                      color: Colors.lightBlueAccent,
+                    ),
                   ),
+                  onTap: () {
+                    print('circle icon pressed');
+                  },
                 ),
                 SizedBox(
                   height: 10.0,
@@ -48,7 +60,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '12 Tasks',
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w100,
