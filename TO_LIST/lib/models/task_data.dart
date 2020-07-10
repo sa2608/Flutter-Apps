@@ -6,11 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'task.dart';
 
 class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy dood'),
-    Task(name: 'Buy toothbrush'),
-  ];
+  List<Task> _tasks = [];
 
   int get taskCount {
     return _tasks.length;
@@ -32,5 +28,8 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-
+  void deleteTask(Task task) {
+    _tasks.remove(task);
+    notifyListeners();
+  }
 }
