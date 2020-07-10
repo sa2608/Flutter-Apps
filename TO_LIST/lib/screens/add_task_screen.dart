@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/task.dart';
+import 'package:provider/provider.dart';
+import '../models/task_data.dart';
 
 class AddTaskScreen extends StatefulWidget {
-  final Function addTaskCallback;
-  AddTaskScreen(this.addTaskCallback);
-
   @override
   _AddTaskScreenState createState() => _AddTaskScreenState();
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
-      String newTaskTitle;
+  String newTaskTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               color: Colors.lightBlueAccent,
               onPressed: () {
                 print(newTaskTitle);
-                widget.addTaskCallback(newTaskTitle);
+                // final task = Task(name: newTaskTitle);
+                // Provider.of<TaskData>(context, listen: false).tasks.add(task);
+                Provider.of<TaskData>(context,listen: false).addTask(newTaskTitle);
                 Navigator.pop(context);
               },
             ),

@@ -6,7 +6,6 @@ import 'package:todo_app/widgets/tasks_list.dart';
 import 'package:provider/provider.dart';
 
 class TasksScreen extends StatelessWidget {
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +18,7 @@ class TasksScreen extends StatelessWidget {
         ),
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              builder: (context) => AddTaskScreen((newTaskTitle) {
-                    // tasks.add(Task(name: newTaskTitle));
-                  }));
+              context: context, builder: (context) => AddTaskScreen());
         },
       ),
       body: Column(
